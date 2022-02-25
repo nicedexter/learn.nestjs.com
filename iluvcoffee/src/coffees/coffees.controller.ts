@@ -14,7 +14,7 @@ export class CoffeesController {
     }
 
     @Get(':id')
-    findOne(@Param('id') id: string) {
+    findOne(@Param('id') id: number) {
         const coffee = this.coffeesService.findOne(id);
 
         if (!coffee) {
@@ -30,12 +30,12 @@ export class CoffeesController {
     }
 
     @Patch(':id')
-    update(@Param('id') id: string, @Body() updateCoffeDto: UpdateCoffeeDto) {
+    update(@Param('id') id: number, @Body() updateCoffeDto: UpdateCoffeeDto) {
         return this.coffeesService.update(id, updateCoffeDto);
     }
 
     @Delete(':id')
-    remove(@Param('id') id: string) {
+    remove(@Param('id') id: number) {
         return this.coffeesService.remove(id);
     }
 }
