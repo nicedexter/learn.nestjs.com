@@ -1,16 +1,19 @@
-import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Flavor } from "./flavor.entity";
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm"
+import { Flavor } from "./flavor.entity"
 
 @Entity()
 export class Coffee {
     @PrimaryGeneratedColumn()
-    id: number;
-
-    @Column() 
-    name: string;
+    id: number
 
     @Column()
-    brand: string;
+    name: string
+
+    @Column()
+    brand: string
+
+    @Column({ default: 0 })
+    recommendations: number
 
     @JoinTable()
     @ManyToMany(
@@ -20,5 +23,5 @@ export class Coffee {
             cascade: true
         }
     )
-    flavors: Flavor[];
+    flavors: Flavor[]
 }
