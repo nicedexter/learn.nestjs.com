@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, NotFoundException, Param, Patch, Post, Query, SetMetadata } from '@nestjs/common'
+import { Body, Controller, Delete, Get, NotFoundException, Param, ParseIntPipe, Patch, Post, Query, SetMetadata } from '@nestjs/common'
 import { Public } from 'src/common/decorators/public.decorator'
 import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto'
 import { CoffeesService } from './coffees.service'
@@ -16,7 +16,7 @@ export class CoffeesController {
     }
 
     @Get(':id')
-    findOne(@Param('id') id: number) {
+    findOne(@Param('id', ParseIntPipe) id: number) {
         const coffee = this.coffeesService.findOne(id)
 
         if (!coffee) {
